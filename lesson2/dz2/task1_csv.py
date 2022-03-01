@@ -25,12 +25,6 @@ from chardet import detect
 from settings import INFO_FILES_DIR, get_files
 
 
-def get_encoding_file(file_name: str) -> any:
-    with open(file_name, 'rb') as f:
-        content = f.read()
-    return detect(content)['encoding']
-
-
 def get_data() -> list:
     os_prod_list, os_name_list, os_code_list, os_type_list = [], [], [], []
     main_data = [os_prod_list, os_name_list, os_code_list, os_type_list]
