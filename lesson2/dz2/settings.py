@@ -15,6 +15,11 @@ ORDER = {
 }
 ORDERS = [ORDER, ]
 
+DATA_TO_YAML = {
+    '1€': [1, 'python', 0.2],
+    '2€': 2,
+    '3€': ORDER
+}
 
 def get_files(directory, file_extension=None):
     all_files = os.listdir(directory)
