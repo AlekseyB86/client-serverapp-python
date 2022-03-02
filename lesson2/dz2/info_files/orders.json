@@ -1,0 +1,18 @@
+{
+    "orders": [
+        {
+            "buyer": "Zelena",
+            "date": "01-03-2022, 13-35-15",
+            "item": "iphone 13 PRO",
+            "price": "116900.5",
+            "quantity": "300"
+        },
+        {
+            "buyer": "Маршал",
+            "date": "01-03-2022, 13-37-21",
+            "item": "iphone 13 PRO",
+            "price": "116900.5",
+            "quantity": "300"
+        }
+    ]
+}
