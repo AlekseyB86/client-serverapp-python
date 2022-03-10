@@ -1,90 +1,63 @@
 """
-Программа-сервер
-
+Урок 3. Основы сетевого программирования
 1. Реализовать простое клиент-серверное взаимодействие по протоколу JIM (JSON instant messaging):
-    - клиент отправляет запрос серверу;
-    - сервер отвечает соответствующим кодом результата.
-
-   Клиент и сервер должны быть реализованы в виде отдельных скриптов, содержащих соответствующие функции.
-   Функции сервера:
-    - принимает сообщение клиента;
-    - формирует ответ клиенту;
-    - отправляет ответ клиенту;
-    - имеет параметры командной строки:
-        -p <port> — TCP-порт для работы (по умолчанию использует 7777);
-        -a <addr> — IP-адрес для прослушивания (по умолчанию слушает все доступные адреса).
+a. клиент отправляет запрос серверу;
+b. сервер отвечает соответствующим кодом результата.
+Клиент и сервер должны быть реализованы в виде отдельных скриптов, содержащих соответствующие функции.
+Функции сервера:
+1. Принимает сообщение клиента;
+2. Формирует ответ клиенту;
+3. Отправляет ответ клиенту.
+Имеет параметры командной строки:
+-p <port> — TCP-порт для работы (по умолчанию использует 7777);
+-a <addr> — IP-адрес для прослушивания (по умолчанию слушает все доступные адреса).
 """
-
+import argparse
 import json
+from config import ACTION, PRESENCE, TIME, RESPONSE, OK, WRONG_REQUEST, ERROR, server_port, server_address
 import socket
-import sys
-
-import common.variables as cv
-from common.utils import get_message, send_message
 
 
-def process_client_message(message):
-    """
-    Обработчик сообщений от клиентов, принимает словарь - сообщение от клиента, проверяет корректность,
-    возвращает словарь-ответ для клиента
-    """
-    if cv.ACTION in message and message[cv.ACTION] == cv.PRESENCE and cv.TIME in message \
-            and cv.USER in message and message[cv.USER][cv.ACCOUNT_NAME] == 'Guest':
-        return {cv.RESPONSE: 200}
-    return {
-        cv.RESPONDEFAULT_IP_ADDRESSE: 400,
-        cv.ERROR: 'Bad Request'
-    }
+def check_correct_presence_and_response(presence_message):
+    if ACTION in presence_message and \
+            presence_message[ACTION] == PRESENCE and \
+            TIME in presence_message and \
+            isinstance(presence_message[TIME], float):
+        return {RESPONSE: OK}
+    else:
+        return {RESPONSE: WRONG_REQUEST, ERROR: 'Не верный запрос'}
 
 
-def main():
-    """
-    Загрузка параметров командной строки, если нет параметров, то задаём значения по умолчанию.
-    Сначала обрабатываем порт:
-    server.py -p 8888 -a 127.0.0.1
-    :return:
-    """
-
-    try:
-        if '-p' in sys.argv:
-            listen_port = int(sys.argv[sys.argv.index('-p') + 1])
-        else:
-            listen_port = cv.DEFAULT_PORT
-        if listen_port < 1024 or listen_port > 65535:
-            raise ValueError
-    except IndexError:
-        print('После параметра -\'p\' необходимо указать номер порта')
-        sys.exit(1)
-    except ValueError:
-        print('В качестве порта может быть указано только число в диапазоне от 1024 до 65535')
-        sys.exit(1)
-
-    # Затем загружаем какой адрес слушать
-    try:
-        listen_address = sys.argv[sys.argv.index('-a') + 1] if '-a' in sys.argv else ''
-    except IndexError:
-        print('После параметра -\'a\' необходимо указать адрес, который будет слушать сервер')
-        sys.exit(1)
-
-    # Готовим сокет
-    transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    transport.bind((listen_address, listen_port))
-
-    # Слушаем порт
-    transport.listen(cv.MAX_CONNECTIONS)
+def start_server():
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # создаем сокет
+    sock.bind((server_address, server_port))  # связываем сокет с портом, где он будет ожидать сообщения
+    sock.listen(1)  # указываем сколько может сокет принимать соединений
+    print('Готов к приему клиентов! \n')
 
     while True:
-        client, client_address = transport.accept()
-        try:
-            message_from_client = get_message(client)
-            print(message_from_client)
-            response = process_client_message(message_from_client)
-            send_message(client_address, response)
-            client.close()
-        except (ValueError, json.JSONDecodeError):
-            print('Принято некорректное сообщение от клиента.')
-            client.close()
+        client, address = sock.accept()  # начинаем принимать соединения
+        print('соединение:', address)  # выводим информацию о подключении
+        data = client.recv(1024)  # принимаем данные от клиента, по 1024 байт
+        # Раскодирование байтстроки в строку, используя кодировку utf-8
+        # Преобразование строки JSON в объекты Python
+        client_message = json.loads(data.decode("utf-8"))
+        print(f'Принято сообщение от клиента: {client_message}')
+        answer = check_correct_presence_and_response(client_message)
+        print(f"Приветствуем пользователя {client_message.get('user').get('account_name')}!")
+        print('Отправка ответа клиенту:', answer)
+
+        # Преобразование объекта Python в строку JSON
+        # Кодируем строку в байты, используя кодировку utf-8
+        client.send(json.dumps(answer).encode('utf-8'))
+    client.close()  # закрываем соединение
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-p', '--port', type=int, help='Port server', default=server_port)
+    parser.add_argument('-a', '--address', type=str, help='Address server', default=server_address)
+    args = parser.parse_args()
+
+    server_port = args.port
+    server_address = args.address
+    start_server()
