@@ -49,7 +49,7 @@ def start_server():
         # Преобразование объекта Python в строку JSON
         # Кодируем строку в байты, используя кодировку utf-8
         client.send(json.dumps(answer).encode('utf-8'))
-    client.close()  # закрываем соединение
+        client.close()  # закрываем соединение
 
 
 if __name__ == "__main__":

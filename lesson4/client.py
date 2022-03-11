@@ -16,7 +16,7 @@ b. сервер отвечает соответствующим кодом ре�
 import sys
 import json
 import time
-from socket import *
+import socket
 from config import *
 
 
@@ -27,18 +27,17 @@ def create_presence_message(account_name='Guest'):
     if not isinstance(account_name, str):
         raise TypeError
 
-    message = {
+    return {
         ACTION: PRESENCE,
         TIME: time.time(),
         USER: {
             ACCOUNT_NAME: account_name
         }
     }
-    return message
 
 
 def start_client():
-    s = socket(AF_INET, SOCK_STREAM)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     if server_address != '0.0.0.0':
         s.connect((server_address, server_port))
     else:

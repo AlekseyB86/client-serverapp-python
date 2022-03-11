@@ -1,9 +1,6 @@
 import unittest
-from multiprocessing import Process
 
-from client import create_presence_message, start_client
-from config import UnknownCode
-from server import start_server
+from client import create_presence_message
 
 
 class TestCreateMessage(unittest.TestCase):
@@ -18,20 +15,6 @@ class TestCreateMessage(unittest.TestCase):
 
     def testDefaultUsername(self):
         self.assertEqual(create_presence_message()['user']['account_name'], "Guest")
-
-
-class TestStartClient(unittest.TestCase):
-
-    def testConnectError(self):
-        with self.assertRaises(Exception):
-            start_client()
-
-    def testUnknownResponseCode(self):
-        server_process = Process(target=start_server)
-        server_process.start()
-        with self.assertRaises(UnknownCode):
-            start_client()
-        server_process.terminate()
 
 
 if __name__ == "__main__":

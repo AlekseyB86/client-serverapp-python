@@ -1,6 +1,6 @@
 import unittest
 
-from server import check_correct_presence_and_response, start_server
+from server import check_correct_presence_and_response
 
 
 class TestCheckMessages(unittest.TestCase):
@@ -36,13 +36,6 @@ class TestCheckMessages(unittest.TestCase):
              'user': {'account_name': 'SuperUser'}}),
             {'response': 400,
              'error': 'Не верный запрос'})
-
-
-class TestStartServer(unittest.TestCase):
-
-    def testUnknownServerReq(self):
-        with self.assertRaises(ValueError):
-            start_server()
 
 
 if __name__ == "__main__":
