@@ -1,4 +1,7 @@
+import sys
+import os
 import unittest
+sys.path.append(os.path.join(os.getcwd(), '..'))
 
 from server import check_correct_presence_and_response
 
