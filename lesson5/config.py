@@ -25,10 +25,10 @@ CONFLICT = 409  # (conflict) — уже имеется подключение с
 GONE = 410  # (gone) — адресат существует, но недоступен (offline).
 INTERNAL_ERROR = 500  # ошибка сервера.
 
-StandartServerCodes = BASIC_NOTICE, OK, ACCEPTED,\
-                      WRONG_REQUEST, SERVER_ERROR,\
+StandartServerCodes = BASIC_NOTICE, OK, ACCEPTED, \
+                      WRONG_REQUEST, SERVER_ERROR, \
                       IMPORTANT_NOTICE, CREATED, NO_AUTH, \
-                      WRONG_PASSWORD, BANNED, NOT_FOUND,\
+                      WRONG_PASSWORD, BANNED, NOT_FOUND, \
                       GONE, INTERNAL_ERROR
 
 

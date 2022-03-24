@@ -1,0 +1,27 @@
+2022-03-24 19:25:40,299 - INFO - client_config_log: <module> - Информационное сообщение 
+2022-03-24 19:25:40,299 - WARNING - client_config_log: <module> - Внимание! 
+2022-03-24 19:25:40,299 - ERROR - client_config_log: <module> - Ошибка! 
+2022-03-24 19:32:18,172 - INFO - client: start_client - Запуск клиента 
+2022-03-24 19:32:18,176 - INFO - client: create_presence_message - Формирование сообщения 
+2022-03-24 19:32:18,177 - INFO - client: start_client - Отправляю сообщение "{'action': 'presence', 'time': '2022-03-24-19.32.18', 'user': {'account_name': 'Guest'}}" на сервер 
+2022-03-24 19:32:18,178 - INFO - client: start_client - жду ответа 
+2022-03-24 19:32:18,179 - INFO - client: start_client - Ответ: 
+2022-03-24 19:32:18,179 - INFO - client: start_client - Сервер нас понимает! 
+2022-03-24 19:32:45,039 - INFO - client: start_client - Запуск клиента 
+2022-03-24 19:32:45,040 - INFO - client: create_presence_message - Формирование сообщения 
+2022-03-24 19:32:45,040 - INFO - client: start_client - Отправляю сообщение "{'action': 'presence', 'time': '2022-03-24-19.32.45', 'user': {'account_name': 'Guest'}}" на сервер 
+2022-03-24 19:32:45,041 - INFO - client: start_client - жду ответа 
+2022-03-24 19:32:45,043 - INFO - client: start_client - Ответ: 
+2022-03-24 19:32:45,043 - INFO - client: start_client - Сервер нас понимает! 
+2022-03-24 19:32:48,135 - INFO - client: start_client - Запуск клиента 
+2022-03-24 19:32:48,138 - INFO - client: create_presence_message - Формирование сообщения 
+2022-03-24 19:32:48,138 - INFO - client: start_client - Отправляю сообщение "{'action': 'presence', 'time': '2022-03-24-19.32.48', 'user': {'account_name': 'Guest'}}" на сервер 
+2022-03-24 19:32:48,139 - INFO - client: start_client - жду ответа 
+2022-03-24 19:32:48,140 - INFO - client: start_client - Ответ: 
+2022-03-24 19:32:48,140 - INFO - client: start_client - Сервер нас понимает! 
+2022-03-24 19:32:49,502 - INFO - client: start_client - Запуск клиента 
+2022-03-24 19:32:49,503 - INFO - client: create_presence_message - Формирование сообщения 
+2022-03-24 19:32:49,503 - INFO - client: start_client - Отправляю сообщение "{'action': 'presence', 'time': '2022-03-24-19.32.49', 'user': {'account_name': 'Guest'}}" на сервер 
+2022-03-24 19:32:49,504 - INFO - client: start_client - жду ответа 
+2022-03-24 19:32:49,512 - INFO - client: start_client - Ответ: 
+2022-03-24 19:32:49,512 - INFO - client: start_client - Сервер нас понимает! 

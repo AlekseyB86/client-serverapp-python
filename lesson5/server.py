@@ -2,16 +2,22 @@
 Программа Сервер
 """
 import argparse
-import json
+import logging
+import pickle
+import sys
 from config import ACTION, PRESENCE, TIME, RESPONSE, OK, WRONG_REQUEST, ERROR, server_port, server_address
 import socket
+import logs.config.server_config_log
+
+log = logging.getLogger('Server_log')
 
 
 def check_correct_presence_and_response(presence_message):
+    log.info('Запуск функции проверки корректности запроса')
     if ACTION in presence_message and \
             presence_message[ACTION] == PRESENCE and \
             TIME in presence_message and \
-            isinstance(presence_message[TIME], float):
+            isinstance(presence_message[TIME], str):
         return {RESPONSE: OK}
     else:
         return {RESPONSE: WRONG_REQUEST, ERROR: 'Не верный запрос'}
@@ -21,23 +27,24 @@ def start_server():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # создаем сокет
     sock.bind((server_address, server_port))  # связываем сокет с портом, где он будет ожидать сообщения
     sock.listen(1)  # указываем сколько может сокет принимать соединений
-    print('Готов к приему клиентов! \n')
+    log.info('Готов к приему клиентов! \n')
 
     while True:
         client, address = sock.accept()  # начинаем принимать соединения
-        print('соединение:', address)  # выводим информацию о подключении
-        data = client.recv(1024)  # принимаем данные от клиента, по 1024 байт
-        # Раскодирование байтстроки в строку, используя кодировку utf-8
+        log.info('соединение:', address)  # выводим информацию о подключении
+        data_bytes = client.recv(1024)  # принимаем данные от клиента, по 1024 байт
+
         # Преобразование строки JSON в объекты Python
-        client_message = json.loads(data.decode("utf-8"))
-        print(f'Принято сообщение от клиента: {client_message}')
+        client_message = pickle.loads(data_bytes)
+
+        log.info(f'Принято сообщение от клиента: {client_message}')
         answer = check_correct_presence_and_response(client_message)
-        print(f"Приветствуем пользователя {client_message.get('user').get('account_name')}!")
-        print('Отправка ответа клиенту:', answer)
+        log.info(f"Приветствуем пользователя {client_message.get('user').get('account_name')}!")
+        log.info('Отправка ответа клиенту:', answer)
 
         # Преобразование объекта Python в строку JSON
-        # Кодируем строку в байты, используя кодировку utf-8
-        client.send(json.dumps(answer).encode('utf-8'))
+        data_bytes = pickle.dumps(answer)
+        client.send(data_bytes)
         client.close()  # закрываем соединение
 
 
@@ -49,4 +56,11 @@ if __name__ == "__main__":
 
     server_port = args.port
     server_address = args.address
+
+    # Показывать лог в консоль при запуске сервера напрямую
+    server_stream_handler = logging.StreamHandler(sys.stdout)
+    server_stream_handler.setLevel(logging.INFO)
+    server_stream_handler.setFormatter(logs.config.server_config_log.log_format)
+    log.addHandler(server_stream_handler)
+
     start_server()

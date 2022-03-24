@@ -1,0 +1,21 @@
+2022-03-24 19:25:33,788 - INFO - server_config_log: <module> - Информационное сообщение 
+2022-03-24 19:25:33,789 - WARNING - server_config_log: <module> - Внимание! 
+2022-03-24 19:25:33,789 - ERROR - server_config_log: <module> - Ошибка! 
+2022-03-24 19:32:10,132 - INFO - server: start_server - Готов к приему клиентов! 
+ 
+2022-03-24 19:32:18,177 - INFO - server: start_server - Принято сообщение от клиента: {'action': 'presence', 'time': '2022-03-24-19.32.18', 'user': {'account_name': 'Guest'}} 
+2022-03-24 19:32:18,177 - INFO - server: check_correct_presence_and_response - Запуск функции проверки корректности запроса 
+2022-03-24 19:32:18,178 - INFO - server: start_server - Приветствуем пользователя Guest! 
+2022-03-24 19:32:18,178 - INFO - server: start_server - Отправка ответа клиенту: 
+2022-03-24 19:32:45,041 - INFO - server: start_server - Принято сообщение от клиента: {'action': 'presence', 'time': '2022-03-24-19.32.45', 'user': {'account_name': 'Guest'}} 
+2022-03-24 19:32:45,042 - INFO - server: check_correct_presence_and_response - Запуск функции проверки корректности запроса 
+2022-03-24 19:32:45,042 - INFO - server: start_server - Приветствуем пользователя Guest! 
+2022-03-24 19:32:45,042 - INFO - server: start_server - Отправка ответа клиенту: 
+2022-03-24 19:32:48,138 - INFO - server: start_server - Принято сообщение от клиента: {'action': 'presence', 'time': '2022-03-24-19.32.48', 'user': {'account_name': 'Guest'}} 
+2022-03-24 19:32:48,139 - INFO - server: check_correct_presence_and_response - Запуск функции проверки корректности запроса 
+2022-03-24 19:32:48,139 - INFO - server: start_server - Приветствуем пользователя Guest! 
+2022-03-24 19:32:48,139 - INFO - server: start_server - Отправка ответа клиенту: 
+2022-03-24 19:32:49,504 - INFO - server: start_server - Принято сообщение от клиента: {'action': 'presence', 'time': '2022-03-24-19.32.49', 'user': {'account_name': 'Guest'}} 
+2022-03-24 19:32:49,505 - INFO - server: check_correct_presence_and_response - Запуск функции проверки корректности запроса 
+2022-03-24 19:32:49,505 - INFO - server: start_server - Приветствуем пользователя Guest! 
+2022-03-24 19:32:49,505 - INFO - server: start_server - Отправка ответа клиенту: 
