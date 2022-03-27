@@ -1,0 +1,17 @@
+2022-03-27 19:05:13,179 - INFO - server: start_server - Готов к приему клиентов! 
+ 
+2022-03-27 19:08:07,347 - INFO - server: start_server - Принято сообщение от клиента: {'action': 'presence', 'time': '2022-03-27-19.08.07', 'user': {'account_name': 'Guest'}} 
+2022-03-27 19:08:07,348 - INFO - server: check_correct_presence_and_response - Запуск функции проверки корректности запроса 
+2022-03-27 19:08:07,351 - INFO - decorators: deco_log_call - Sun Mar 27 19:08:07 2022 Вызван декоратор Log для check_correct_presence_and_response с параметрами ({'action': 'presence', 'time': '2022-03-27-19.08.07', 'user': {'account_name': 'Guest'}},) из функции start_server() 
+2022-03-27 19:08:07,352 - INFO - server: start_server - Приветствуем пользователя Guest! 
+2022-03-27 19:08:07,352 - INFO - server: start_server - Отправка ответа клиенту: 
+2022-03-27 19:16:11,024 - INFO - server: start_server - Принято сообщение от клиента: {'action': 'presence', 'time': '2022-03-27-19.16.11', 'user': {'account_name': 'Guest'}} 
+2022-03-27 19:16:11,025 - INFO - server: check_correct_presence_and_response - Запуск функции проверки корректности запроса 
+2022-03-27 19:16:11,025 - INFO - decorators: deco_log_call - Sun Mar 27 19:16:11 2022 Вызван декоратор Log для check_correct_presence_and_response с параметрами ({'action': 'presence', 'time': '2022-03-27-19.16.11', 'user': {'account_name': 'Guest'}},) из функции start_server() 
+2022-03-27 19:16:11,026 - INFO - server: start_server - Приветствуем пользователя Guest! 
+2022-03-27 19:16:11,026 - INFO - server: start_server - Отправка ответа клиенту: 
+2022-03-27 19:16:46,484 - INFO - server: start_server - Принято сообщение от клиента: {'action': 'presence', 'time': '2022-03-27-19.16.46', 'user': {'account_name': 'Guest'}} 
+2022-03-27 19:16:46,485 - INFO - server: check_correct_presence_and_response - Запуск функции проверки корректности запроса 
+2022-03-27 19:16:46,485 - INFO - decorators: deco_log_call - Sun Mar 27 19:16:46 2022 Вызван декоратор Log для check_correct_presence_and_response с параметрами ({'action': 'presence', 'time': '2022-03-27-19.16.46', 'user': {'account_name': 'Guest'}},) из функции start_server() 
+2022-03-27 19:16:46,485 - INFO - server: start_server - Приветствуем пользователя Guest! 
+2022-03-27 19:16:46,485 - INFO - server: start_server - Отправка ответа клиенту: 
