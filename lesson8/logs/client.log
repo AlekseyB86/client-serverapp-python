@@ -1,0 +1,24 @@
+2022-03-27 19:08:07,335 - INFO - client: start_client - Запуск клиента 
+2022-03-27 19:08:07,337 - INFO - client: create_presence_message - Формирование сообщения 
+2022-03-27 19:08:07,338 - INFO - decorators: deco_log_call - Sun Mar 27 19:08:07 2022 Вызван декоратор Log для create_presence_message из функции start_client() 
+2022-03-27 19:08:07,338 - INFO - client: start_client - Отправляю сообщение "{'action': 'presence', 'time': '2022-03-27-19.08.07', 'user': {'account_name': 'Guest'}}" на сервер 
+2022-03-27 19:08:07,339 - INFO - client: start_client - жду ответа 
+2022-03-27 19:08:07,353 - INFO - client: start_client - Ответ: 
+2022-03-27 19:08:07,353 - INFO - client: start_client - Сервер нас понимает! 
+2022-03-27 19:08:07,354 - INFO - decorators: deco_log_call - Sun Mar 27 19:08:07 2022 Вызван декоратор Log для start_client из функции start_client() 
+2022-03-27 19:16:11,021 - INFO - client: start_client - Запуск клиента 
+2022-03-27 19:16:11,022 - INFO - client: create_presence_message - Формирование сообщения 
+2022-03-27 19:16:11,024 - INFO - decorators: deco_log_call - Sun Mar 27 19:16:11 2022 Вызван декоратор Log для create_presence_message из функции start_client() 
+2022-03-27 19:16:11,024 - INFO - client: start_client - Отправляю сообщение "{'action': 'presence', 'time': '2022-03-27-19.16.11', 'user': {'account_name': 'Guest'}}" на сервер 
+2022-03-27 19:16:11,035 - INFO - client: start_client - жду ответа 
+2022-03-27 19:16:11,036 - INFO - client: start_client - Ответ: 
+2022-03-27 19:16:11,036 - INFO - client: start_client - Сервер нас понимает! 
+2022-03-27 19:16:11,036 - INFO - decorators: deco_log_call - Sun Mar 27 19:16:11 2022 Вызван декоратор Log для start_client из функции start_client() 
+2022-03-27 19:16:46,481 - INFO - client: start_client - Запуск клиента 
+2022-03-27 19:16:46,483 - INFO - client: create_presence_message - Формирование сообщения 
+2022-03-27 19:16:46,484 - INFO - decorators: deco_log_call - Sun Mar 27 19:16:46 2022 Вызван декоратор Log для create_presence_message из функции start_client() 
+2022-03-27 19:16:46,484 - INFO - client: start_client - Отправляю сообщение "{'action': 'presence', 'time': '2022-03-27-19.16.46', 'user': {'account_name': 'Guest'}}" на сервер 
+2022-03-27 19:16:46,484 - INFO - client: start_client - жду ответа 
+2022-03-27 19:16:46,486 - INFO - client: start_client - Ответ: 
+2022-03-27 19:16:46,486 - INFO - client: start_client - Сервер нас понимает! 
+2022-03-27 19:16:46,486 - INFO - decorators: deco_log_call - Sun Mar 27 19:16:46 2022 Вызван декоратор Log для start_client из функции start_client() 
